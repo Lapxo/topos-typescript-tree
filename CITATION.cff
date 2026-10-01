@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Cite it as @lapxo/topos-typescript-tree."
+type: software
+title: "@lapxo/topos-typescript-tree"
+version: "0.1.0"
+authors:
+  - name: "Lapxo"
+repository-code: "https://github.com/lapxo/topos-typescript-tree"
+license: "MIT"

@@ -1,0 +1,1063 @@
+{
+ "about": [
+  "What the said region reads a file of its shape as, in two worlds: a place of the tree and a published folder."
+ ],
+ "worlds": {},
+ "cases": [
+  {
+   "name": "tree · topos-node/src/regions/manifest.ts",
+   "world": "tree",
+   "request": {
+    "verb": "read",
+    "region": "said",
+    "rootScope": "topos-node/src/regions/manifest.ts",
+    "files": [
+     {
+      "place": "topos-node/src/regions/manifest.ts",
+      "text": "import { at, found, json, lang, listed, of, sentence, truth, under } from '@lapxo/topos/capsule';\nimport type { Asked } from '@lapxo/topos/capsule';\n\nconst versioned = (text: string | undefined): Record<string, string> => Object.fromEntries((text ?? '').split('|').filter(Boolean)\n  .map((one) => [one.slice(0, one.lastIndexOf('@')), one.slice(one.lastIndexOf('@') + 1)]));\n\n/**\n * The manifest of the tree's copy: what the place holds, read by the tree's own resolver through typesVersions, main and\n * types, and by a resolver asking for sources through the source each subpath was built from. Nothing is a default: a\n * field absent from the place's lines is absent here, and the description is its prose written as its language writes.\n */\nexport const manifest = (asked: Asked): readonly string[] => {\n  const [subpaths, source, what] = [under(asked, 'exports'), at(asked, 'source'), found(asked, `prose/${lang(asked)}/what`)];\n  const resolved = (built: string): Record<string, string> => ({ ...(source ? { source: `./${source}${built.slice(built.indexOf('/'))}.ts` } : {}), types: `./${built}.d.ts`, default: `./${built}.js` });\n  const root = subpaths.find(([sub]) => sub === '')?.[1] ?? '';\n  const [repository, kind, side] = [at(asked, 'repository'), at(asked, 'type'), at(asked, 'sideEffects')];\n  return json({\n    name: at(asked, 'name'), version: at(asked, 'version'), description: what === undefined ? undefined : sentence(asked, of(what, 'about')),\n    ...(kind ? { type: kind } : {}), license: at(asked, 'license'), author: at(asked, 'author'),\n    ...(repository ? { repository: { type: 'git', url: `git+${repository}.git` } } : {}), keywords: (at(asked, 'keywords') ?? '').split('|').filter(Boolean),\n    ...(side === undefined ? {} : { sideEffects: truth(side) }), engines: { node: at(asked, 'engines') },\n    typesVersions: { '*': Object.fromEntries(subpaths.filter(([sub]) => sub !== '').map(([sub, built]) => [sub, [`${built}.d.ts`]])) },\n    exports: { ...Object.fromEntries(subpaths.map(([sub, built]) => [sub === '' ? '.' : `./${sub}`, resolved(built)])), [`./${asked.shape}`]: `./${asked.shape}` },\n    files: listed(asked, 'audit/wire/ships'), scripts: Object.fromEntries(under(asked, 'scripts').filter(([name]) => name !== '')),\n    ...(at(asked, 'dependencies') === undefined ? {} : { dependencies: versioned(at(asked, 'dependencies')) }), devDependencies: versioned(at(asked, 'devDependencies')),\n    main: `${root}.js`, types: `${root}.d.ts`,\n  });\n};\n"
+     }
+    ]
+   },
+   "expected": [
+    {
+     "scope": "source/lang",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "ts"
+      ]
+     }
+    },
+    {
+     "scope": "source/lines",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 28,
+      "hi": 28
+     }
+    },
+    {
+     "scope": "source/head",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "\n * The manifest of the tree's copy: what the place holds, read by the tree's own resolver through typesVersions, main and\n * types, and by a resolver asking for sources through the source each subpath was built from. Nothing is a default: a\n * field absent from the place's lines is absent here, and the description is its prose written as its language writes.\n "
+      ]
+     }
+    },
+    {
+     "scope": "source/signature/manifest",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "manifest(asked: Asked): readonly string[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/range/manifest",
+     "measure": "named",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "744..808"
+      ]
+     }
+    },
+    {
+     "scope": "source/imports/@lapxo/topos/capsule",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "at",
+       "found",
+       "json",
+       "lang",
+       "listed",
+       "of",
+       "sentence",
+       "truth",
+       "under"
+      ]
+     }
+    },
+    {
+     "scope": "source/specifiers",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "@lapxo/topos/capsule"
+      ]
+     }
+    },
+    {
+     "scope": "source/carries",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Asked"
+      ]
+     }
+    },
+    {
+     "scope": "source/calls",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Object",
+       "at",
+       "built",
+       "found",
+       "json",
+       "lang",
+       "listed",
+       "of",
+       "one",
+       "resolved",
+       "sentence",
+       "subpaths",
+       "truth",
+       "under",
+       "versioned"
+      ]
+     }
+    },
+    {
+     "scope": "source/words",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "about",
+       "author",
+       "dependencies",
+       "engines",
+       "exports",
+       "git",
+       "keywords",
+       "license",
+       "name",
+       "repository",
+       "scripts",
+       "source",
+       "type",
+       "version"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/under",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'exports'",
+       "'scripts'"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/at",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'source'",
+       "'repository'",
+       "'type'",
+       "'sideEffects'",
+       "'name'",
+       "'version'",
+       "'license'",
+       "'author'",
+       "'keywords'",
+       "'engines'",
+       "'dependencies'",
+       "'dependencies'",
+       "'devDependencies'"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/of",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'about'"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/listed",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'audit/wire/ships'"
+      ]
+     }
+    },
+    {
+     "scope": "source/unread",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/longest",
+     "measure": "longest",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 17,
+      "hi": 17
+     }
+    },
+    {
+     "scope": "source/lexed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/customised",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/dynamic",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/parsed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 2,
+      "hi": 2
+     }
+    },
+    {
+     "scope": "source/form-splits",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 2,
+      "hi": 2
+     }
+    },
+    {
+     "scope": "source/spans",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/numbers",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/text",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 1,
+      "hi": 1
+     }
+    },
+    {
+     "scope": "source/heads",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "about",
+       "audit",
+       "author",
+       "dependencies",
+       "engines",
+       "exports",
+       "git",
+       "keywords",
+       "license",
+       "name",
+       "prose",
+       "repository",
+       "scripts",
+       "source",
+       "type",
+       "version"
+      ]
+     }
+    },
+    {
+     "scope": "source/declares",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "manifest",
+       "versioned"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "folder · topos-node-release/src/manifest.ts",
+   "world": "folder",
+   "request": {
+    "verb": "read",
+    "region": "said",
+    "rootScope": "topos-node-release/src/manifest.ts",
+    "files": [
+     {
+      "place": "topos-node-release/src/manifest.ts",
+      "text": "import type { Asked, Handed } from '@lapxo/topos/capsule';\n\nconst of = (line: Handed, field: string): string => line[field] ?? '';\nconst typed = (value: string): string | boolean => (value === 'true' ? true : value === 'false' ? false : value);\nconst listed = (input: Asked, scope: string): readonly string[] => of(input.lines.find((one) => of(one, 'scope') === scope) ?? {}, 'value').split('|').filter(Boolean);\nconst shapeOf = (input: Asked, region: string): string => of(input.lines.find((one) => of(one, 'scope').startsWith('view/') && of(one, 'value').split('|').some((token) => token.split('@')[0] === region)) ?? {}, 'shape');\nconst said = (input: Asked, shape: string, field: string): string | undefined => ((line) => (line === undefined ? undefined : of(line, 'value')))(input.lines.find((one) => of(one, 'scope') === field && of(one, 'shape') === shape));\nconst under = (input: Asked, shape: string, head: string): readonly (readonly [string, string])[] => input.lines\n  .filter((one) => of(one, 'shape') === shape && (of(one, 'scope') === head || of(one, 'scope').startsWith(`${head}/`)))\n  .map((one) => [of(one, 'scope').slice(head.length + (of(one, 'scope') === head ? 0 : 1)), of(one, 'value')] as const)\n  .sort((a, b) => (a[0] === '' ? -1 : b[0] === '' ? 1 : a[0].localeCompare(b[0])));\nconst json = (value: unknown): readonly string[] => `${JSON.stringify(value, null, 2)}\\n`.split('\\n').slice(0, -1);\nconst versioned = (value: string | undefined): Record<string, string> => Object.fromEntries((value ?? '').split('|').filter(Boolean).map((one) => [one.slice(0, one.lastIndexOf('@')), one.slice(one.lastIndexOf('@') + 1)]));\n\nfunction sentence(input: Asked, text: string): string {\n  const lang = listed(input, 'lang')[0] ?? '';\n  const rule = listed(input, `form/prose/${lang}/sentence`);\n  let end = text.length;\n  while (end > 0 && '. \\n'.includes(text.charAt(end - 1))) end -= 1;\n  const start = rule.includes('capital') ? `${text.charAt(0).toUpperCase()}${text.slice(1, end)}` : text.slice(0, end);\n  return rule.includes('period') ? `${start}.` : start;\n}\n\nfunction build(input: Asked): readonly string[] {\n  const shape = shapeOf(input, 'build');\n  if (!shape) return [];\n  const options = under(input, shape, 'build').filter(([name]) => name !== '');\n  const include = options.find(([name]) => name === 'include')?.[1];\n  return json({ compilerOptions: Object.fromEntries(options.filter(([name]) => name !== 'include').map(([name, value]) => [name, typed(value)])), ...(include === undefined ? {} : { include: include.split('|') }) });\n}\n\nfunction manifest(input: Asked, published: boolean): readonly string[] {\n  const shape = shapeOf(input, published ? 'published-manifest' : 'manifest');\n  if (!shape) return [];\n  const lang = listed(input, 'lang')[0];\n  const what = lang === undefined ? undefined : input.lines.find((one) => of(one, 'scope') === `prose/${lang}/what`);\n  const subpaths = under(input, shape, 'exports');\n  const source = published ? undefined : said(input, shape, 'source');\n  const resolved = (built: string): Record<string, string> => ({ ...(source ? { source: `./${source}${built.slice(built.indexOf('/'))}.ts` } : {}), types: `./${built}.d.ts`, default: `./${built}.js` });\n  const exports: Record<string, unknown> = Object.fromEntries(subpaths.map(([sub, built]) => [sub === '' ? '.' : `./${sub}`, resolved(built)]));\n  exports[`./${shape}`] = `./${shape}`;\n  const root = subpaths.find(([sub]) => sub === '')?.[1] ?? '';\n  const [repository, kind, side] = [said(input, shape, 'repository'), said(input, shape, 'type'), said(input, shape, 'sideEffects')];\n  return json({\n    name: said(input, shape, 'name'), version: said(input, shape, 'version'), description: what === undefined ? undefined : sentence(input, of(what, 'about')),\n    ...(kind ? { type: kind } : {}), license: said(input, shape, 'license'), author: said(input, shape, 'author'),\n    ...(repository ? { repository: { type: 'git', url: `git+${repository}.git` } } : {}), keywords: (said(input, shape, 'keywords') ?? '').split('|').filter(Boolean),\n    ...(side === undefined ? {} : { sideEffects: typed(side) }), engines: { node: said(input, shape, 'engines') },\n    ...(published ? {} : { typesVersions: { '*': Object.fromEntries(subpaths.filter(([sub]) => sub !== '').map(([sub, built]) => [sub, [`${built}.d.ts`]])) } }),\n    exports, files: listed(input, 'audit/wire/ships'), scripts: Object.fromEntries(under(input, shape, 'scripts').filter(([name]) => name !== '')),\n    ...(said(input, shape, 'dependencies') === undefined ? {} : { dependencies: versioned(said(input, shape, 'dependencies')) }), devDependencies: versioned(said(input, shape, 'devDependencies')),\n    ...(published ? {} : { main: `${root}.js`, types: `${root}.d.ts` }),\n  });\n}\n\n/**\n * A manifest is a render of the lock, in the two copies one lock makes: the tree's, which the tree's own resolver\n * still reads through `typesVersions`, `main` and `types`, and the place's, which a consumer reads through `exports`\n * alone, a type and a default for each subpath, and the tree's copy the source it was built from when the lock names\n * where the sources lie. Nothing here is a default — a field absent from the lock is absent\n * from the manifest, the description is the place's own prose in the language its lock names, written as that\n * language writes a sentence, or nothing, and how the place builds is every option one line, its sources one list.\n */\nexport function render(input: Asked): readonly string[] {\n  return input.region === 'build' ? build(input) : manifest(input, input.region === 'published-manifest');\n}\n"
+     }
+    ]
+   },
+   "expected": [
+    {
+     "scope": "source/lang",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "ts"
+      ]
+     }
+    },
+    {
+     "scope": "source/lines",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 66,
+      "hi": 66
+     }
+    },
+    {
+     "scope": "source/head",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "\n * A manifest is a render of the lock, in the two copies one lock makes: the tree's, which the tree's own resolver\n * still reads through `typesVersions`, `main` and `types`, and the place's, which a consumer reads through `exports`\n * alone, a type and a default for each subpath, and the tree's copy the source it was built from when the lock names\n * where the sources lie. Nothing here is a default — a field absent from the lock is absent\n * from the manifest, the description is the place's own prose in the language its lock names, written as that\n * language writes a sentence, or nothing, and how the place builds is every option one line, its sources one list.\n "
+      ]
+     }
+    },
+    {
+     "scope": "source/returns/render",
+     "measure": "type",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "string[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/returns/render",
+     "measure": "params",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "(input: Asked)"
+      ]
+     }
+    },
+    {
+     "scope": "source/signature/render",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "render(input: Asked): readonly string[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/range/render",
+     "measure": "named",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "5450..5512"
+      ]
+     }
+    },
+    {
+     "scope": "source/specifiers",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "@lapxo/topos/capsule"
+      ]
+     }
+    },
+    {
+     "scope": "source/carries",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Asked",
+       "Handed",
+       "render"
+      ]
+     }
+    },
+    {
+     "scope": "source/calls",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "JSON",
+       "Object",
+       "a",
+       "build",
+       "built",
+       "include",
+       "input",
+       "json",
+       "listed",
+       "manifest",
+       "of",
+       "one",
+       "options",
+       "resolved",
+       "rule",
+       "said",
+       "sentence",
+       "shapeOf",
+       "subpaths",
+       "text",
+       "token",
+       "typed",
+       "under",
+       "versioned"
+      ]
+     }
+    },
+    {
+     "scope": "source/words",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "about",
+       "author",
+       "build",
+       "capital",
+       "dependencies",
+       "engines",
+       "exports",
+       "false",
+       "git",
+       "include",
+       "keywords",
+       "lang",
+       "license",
+       "manifest",
+       "name",
+       "period",
+       "repository",
+       "scope",
+       "scripts",
+       "shape",
+       "source",
+       "true",
+       "type",
+       "value",
+       "version"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/of",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'value'",
+       "'scope'",
+       "'shape'",
+       "'scope'",
+       "'value'",
+       "'value'",
+       "'scope'",
+       "'shape'",
+       "'shape'",
+       "'scope'",
+       "'scope'",
+       "'scope'",
+       "'scope'",
+       "'value'",
+       "'scope'",
+       "'about'"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/slice",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "-1"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/listed",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'lang'",
+       "'lang'",
+       "'audit/wire/ships'"
+      ]
+     }
+    },
+    {
+     "scope": "source/typed/shapeOf",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "'build'"
+      ]
+     }
+    },
+    {
+     "scope": "source/unread",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/longest",
+     "measure": "longest",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 23,
+      "hi": 23
+     }
+    },
+    {
+     "scope": "source/lexed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/customised",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/dynamic",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/parsed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 4,
+      "hi": 4
+     }
+    },
+    {
+     "scope": "source/form-splits",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 5,
+      "hi": 5
+     }
+    },
+    {
+     "scope": "source/spans",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/numbers",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 1,
+      "hi": 1
+     }
+    },
+    {
+     "scope": "source/text",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 2,
+      "hi": 2
+     }
+    },
+    {
+     "scope": "source/heads",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "about",
+       "audit",
+       "author",
+       "build",
+       "capital",
+       "dependencies",
+       "engines",
+       "exports",
+       "false",
+       "form",
+       "git",
+       "include",
+       "keywords",
+       "lang",
+       "license",
+       "manifest",
+       "name",
+       "period",
+       "prose",
+       "published-manifest",
+       "repository",
+       "scope",
+       "scripts",
+       "shape",
+       "source",
+       "true",
+       "type",
+       "value",
+       "version",
+       "view"
+      ]
+     }
+    },
+    {
+     "scope": "source/compared",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "build",
+       "false",
+       "include",
+       "published-manifest",
+       "true"
+      ]
+     }
+    },
+    {
+     "scope": "source/declares",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "build",
+       "json",
+       "listed",
+       "manifest",
+       "of",
+       "render",
+       "said",
+       "sentence",
+       "shapeOf",
+       "typed",
+       "under",
+       "versioned"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "tree · obligations/src/replay.ts: a generic arrow's params as name=type fields",
+   "world": "tree",
+   "request": {
+    "verb": "read",
+    "region": "said",
+    "rootScope": "obligations/src/replay.ts",
+    "files": [
+     {
+      "place": "obligations/src/replay.ts",
+      "text": "import { foldRegion } from './field/field.ts';\nimport type { Fold, Point, Region } from './field/field.ts';\n\n/**\n * Replay is the proof: what landed is folded again over its region, and the same points give the same verdicts in any\n * order and on any machine. It is the one loop of the field with a verdict as its local reading; nothing is run again.\n */\nexport function replay<T>(landed: readonly Point[], where: Region, verdict: (met: readonly Point[]) => T): readonly Fold<T>[] {\n  return foldRegion(landed, where, verdict);\n}\n"
+     }
+    ]
+   },
+   "expected": [
+    {
+     "scope": "source/lang",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "ts"
+      ]
+     }
+    },
+    {
+     "scope": "source/lines",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 10,
+      "hi": 10
+     }
+    },
+    {
+     "scope": "source/head",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "\n * Replay is the proof: what landed is folded again over its region, and the same points give the same verdicts in any\n * order and on any machine. It is the one loop of the field with a verdict as its local reading; nothing is run again.\n "
+      ]
+     }
+    },
+    {
+     "scope": "source/returns/replay",
+     "measure": "type",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Fold[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/returns/replay",
+     "measure": "params",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "(landed: readonly Point[], where: Region, verdict: (met: readonly Point[]) => T)"
+      ]
+     }
+    },
+    {
+     "scope": "source/signature/replay",
+     "measure": "text",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "replay<T>(landed: readonly Point[], where: Region, verdict: (met: readonly Point[]) => T): readonly Fold<T>[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/range/replay",
+     "measure": "named",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "356..418"
+      ]
+     }
+    },
+    {
+     "scope": "source/arrow/replay",
+     "measure": "params",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "landed=Point[]",
+       "where=Region",
+       "verdict=(met: readonly Point[]) => T"
+      ]
+     }
+    },
+    {
+     "scope": "source/arrow/replay",
+     "measure": "result",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Fold[]"
+      ]
+     }
+    },
+    {
+     "scope": "source/imports/./field/field.ts",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "foldRegion"
+      ]
+     }
+    },
+    {
+     "scope": "source/specifiers",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "./field/field.ts"
+      ]
+     }
+    },
+    {
+     "scope": "source/carries",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "Fold",
+       "Point",
+       "Region",
+       "replay"
+      ]
+     }
+    },
+    {
+     "scope": "source/calls",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "foldRegion"
+      ]
+     }
+    },
+    {
+     "scope": "source/unread",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/longest",
+     "measure": "longest",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 3,
+      "hi": 3
+     }
+    },
+    {
+     "scope": "source/lexed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/customised",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/dynamic",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/parsed",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/form-splits",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/spans",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/numbers",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/text",
+     "measure": "count",
+     "role": "reads",
+     "bound": {
+      "kind": "interval",
+      "lo": 0,
+      "hi": 0
+     }
+    },
+    {
+     "scope": "source/declares",
+     "measure": "id",
+     "role": "reads",
+     "bound": {
+      "kind": "enumerated",
+      "values": [
+       "replay"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

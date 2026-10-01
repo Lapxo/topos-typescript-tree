@@ -1,0 +1,10 @@
+export const slash = '/';
+export const bar = '|';
+export const dash = '-';
+export const atMark = 'a@'.slice(1);
+export const mathName = 'Math';
+export const splitName = 'split';
+export const numberName = 'Number';
+export const orderName = 'localeCompare';
+export const past = '........................................'.length;
+export const five = 'words'.length;

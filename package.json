@@ -1,0 +1,51 @@
+{
+  "name": "@lapxo/topos-typescript-tree",
+  "version": "0.1.0",
+  "description": "A TypeScript module read by the language: its head, its signatures, its imports, its literals, and what it writes that a place customises.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Lapxo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lapxo/topos-typescript-tree.git"
+  },
+  "keywords": [
+    "topos",
+    "capsule",
+    "reader",
+    "typescript"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./mutate": {
+      "types": "./dist/mutate.d.ts",
+      "default": "./dist/mutate.js"
+    },
+    "./said": {
+      "types": "./dist/said.d.ts",
+      "default": "./dist/said.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "TARGET.bound"
+  ],
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "@lapxo/obligations": "^0.3.0",
+    "@lapxo/topos": "^0.1.0",
+    "typescript": "^5.9.3"
+  }
+}

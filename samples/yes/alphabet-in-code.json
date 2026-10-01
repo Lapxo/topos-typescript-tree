@@ -1,0 +1,29 @@
+{
+ "about": [
+  "A set frozen as constants is spelled twice when every member of it is a member of one alphabet the lock signs:",
+  "the lock moves by epoch and the constant does not. A list that merely uses a signed word is not a copy of it."
+ ],
+ "cases": [
+  {
+   "alphabet": "claims|forms|readers|views",
+   "spelled": "topos/src/wire/classes.ts",
+   "signed": "audit/topos/capsule-shape",
+   "shared": [
+    "forms",
+    "views"
+   ],
+   "why": "every member is a member of the signed alphabet, so the lock can move and the constant cannot follow",
+   "expected.ok": true
+  },
+  {
+   "alphabet": "claim|conversion|defineTopos|include|reader|scale|unit|view",
+   "spelled": "topos/src/authority/census.ts",
+   "signed": "audit/topos/capsule-shape",
+   "shared": [
+    "view"
+   ],
+   "why": "one shared word is a use of the wire's vocabulary, not a second spelling of the alphabet: the rest of this list is not in it",
+   "expected.ok": false
+  }
+ ]
+}

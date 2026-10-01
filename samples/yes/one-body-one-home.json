@@ -1,0 +1,7 @@
+{
+ "concept": "concept/7fcc917969ee327b",
+ "homes": ["bound/src/fold/claims.ts"],
+ "was": ["bound/src/cli/verb.ts", "bound/src/render/programs.ts", "bound/src/render/card.ts", "bound/src/fold/receipts.ts"],
+ "why": "a function body is a point; each file that writes it is one more origin there, so a concept written in four places is read off the point, and folding it leaves one home and imports",
+ "expected.ok": true
+}
