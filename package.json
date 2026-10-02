@@ -1,6 +1,6 @@
 {
   "name": "@lapxo/topos-typescript-tree",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A TypeScript module read by the language: its head, its signatures, its imports, its literals, and what it writes that a place customises.",
   "type": "module",
   "license": "MIT",
