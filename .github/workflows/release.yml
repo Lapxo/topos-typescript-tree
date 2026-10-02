@@ -1,0 +1,27 @@
+name: release
+on:
+  workflow_run:
+    workflows: [tag]
+    types: [completed]
+  push:
+    tags: ['v*']
+jobs:
+  release:
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          gh release view "$version" >/dev/null 2>&1 && exit 0
+          gh release create "$version" "$(npm pack --silent)" --title "$version" --notes "$version"

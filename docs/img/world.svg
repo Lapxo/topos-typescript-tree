@@ -1,23 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656 336" width="656" height="336" role="img" aria-label="declares typescript, runs on node, reaches none, 3 regions, the longest of them 1 lines, 0 vector files, each held from the blob, packed as sha256:481201988328984d16b3bfd91207cbc6a29a09c8db771f8670fc16ddb810c38f, pinned by topos-typescript-tree and run by the node host">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" role="img" aria-label="declares , runs on , reaches, 3 regions, the longest of them 0 lines, 0 vector files, each held from the blob, pinned by topos-typescript-tree and run by the host">
 <style>
 text{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#59636e}rect{fill:none;stroke:#8c959f}line{stroke:#2da44e}
 @media (prefers-color-scheme:dark){text{fill:#9198a1}}
 </style>
-<rect x="20" y="8" width="616" height="36" rx="6"/>
-<text x="36" y="30">declares typescript, runs on node, reaches none</text>
-<rect x="20" y="64" width="616" height="36" rx="6"/>
-<text x="36" y="86">3 regions, the longest of them 1 lines</text>
-<line x1="328" y1="44" x2="328" y2="64"/>
-<rect x="20" y="120" width="616" height="36" rx="6"/>
+<rect x="20" y="8" width="600" height="36" rx="6"/>
+<text x="36" y="30">declares , runs on , reaches</text>
+<rect x="20" y="64" width="600" height="36" rx="6"/>
+<text x="36" y="86">3 regions, the longest of them 0 lines</text>
+<line x1="320" y1="44" x2="320" y2="64"/>
+<rect x="20" y="120" width="600" height="36" rx="6"/>
 <text x="36" y="142">0 vector files, each held from the blob</text>
-<line x1="328" y1="100" x2="328" y2="120"/>
-<rect x="20" y="176" width="616" height="36" rx="6"/>
-<text x="36" y="198">packed as sha256:481201988328984d16b3bfd91207cbc6a29a09c8db771f8670fc16ddb810c38f</text>
-<line x1="328" y1="156" x2="328" y2="176"/>
-<rect x="20" y="232" width="616" height="36" rx="6"/>
-<text x="36" y="254">pinned by topos-typescript-tree</text>
-<line x1="328" y1="212" x2="328" y2="232"/>
-<rect x="20" y="288" width="616" height="36" rx="6"/>
-<text x="36" y="310">run by the node host</text>
-<line x1="328" y1="268" x2="328" y2="288"/>
+<line x1="320" y1="100" x2="320" y2="120"/>
+<rect x="20" y="176" width="600" height="36" rx="6"/>
+<text x="36" y="198">pinned by topos-typescript-tree</text>
+<line x1="320" y1="156" x2="320" y2="176"/>
+<rect x="20" y="232" width="600" height="36" rx="6"/>
+<text x="36" y="254">run by the host</text>
+<line x1="320" y1="212" x2="320" y2="232"/>
 </svg>
