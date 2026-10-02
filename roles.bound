@@ -1,7 +1,0 @@
-bound-lock/1 about="what a TypeScript tree holds that no hand writes: the compiler's output, its incremental record, and the manifests a package generates from its lock" at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/dist value=derived
-bound-lock/1 at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/dist-esm value=derived
-bound-lock/1 at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/dist-types value=derived
-bound-lock/1 at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/*.tsbuildinfo value=derived
-bound-lock/1 at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/package.json value=derived
-bound-lock/1 at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/tsconfig.json value=derived
-bound-lock/1 about="a world this tree does not own: what a package manager puts there answers to its own lock, and the judge does not walk it" at=policy:typescript-tree/leaf-roles by=target form=alphabet measure=role role=reads scope=leaf-role/node_modules value=foreign
