@@ -1,0 +1,3 @@
+# which effects prove a TypeScript tree still holds, and the argv that proves them, spawned at the root of the tree
+bound-lock/1 at=policy:typescript-tree/effects by=target form=alphabet measure=effect role=reads scope=effect/build shape=*.ts|*.tsx value=node_modules/typescript/bin/tsc|-b|{roots}
+bound-lock/1 at=policy:typescript-tree/effects by=target form=alphabet measure=effect role=reads scope=effect/check shape=*.test.ts|*.test.tsx value=node_modules/typescript/bin/tsc|-p|tsconfig.test.json|--noEmit
